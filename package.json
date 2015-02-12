@@ -1,11 +1,8 @@
 {
-  "name": "myapp.helloworldapp",
+  "name": "steam.app",
   "version": "0.0.1",
-  "description": "Hellow orld",
+  "description": "Steam app",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "window": {
     // "toolbar": false,
     "resizable": false,
@@ -22,8 +19,8 @@
     "java": false,
     "page-cache": false
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Daniel Husar",
+  "license": "MIT",
   "dependencies": {
     "diskdb": "^0.1.14"
   },

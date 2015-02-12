@@ -9,7 +9,7 @@ module.exports = {
 
 	find: function () {
 		return db.settings.find();
-	}
+	},
 
 	update: function (id, data) {
 
