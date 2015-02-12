@@ -1,0 +1,35 @@
+{
+  "name": "myapp.helloworldapp",
+  "version": "0.0.1",
+  "description": "Hellow orld",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "window": {
+    // "toolbar": false,
+    "resizable": false,
+    "width": 1000,
+    "height": 700,
+    "min_width": 800,
+    "min_height": 500,
+    "max_width": 1000,
+    "max_height": 700,
+    "position": "mouse"
+  },
+  "webkit": {
+    "plugin": false,
+    "java": false,
+    "page-cache": false
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "diskdb": "^0.1.14"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-util": "^3.0.3",
+    "node-webkit-builder": "^1.0.8"
+  }
+}
