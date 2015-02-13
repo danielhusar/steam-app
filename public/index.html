@@ -1,3 +1,11 @@
 <div ng-include="'public/_navbar.html'"></div>
 
-<div class="container">Index</div>
+<div class="container">
+
+	<div class="list-group">
+		<div class="list-group-item" ng-repeat="item in items">
+		  <h4 class="list-group-item-heading">{{item.name}}</h4>
+		  <p class="list-group-item-text">{{item.game}}</p>
+		</div>
+	</div>
+</div>

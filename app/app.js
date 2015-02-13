@@ -31,3 +31,4 @@ require('./app/controller/search.js')(app);
 require('./app/controller/settings.js')(app);
 require('./app/service/settings.js')(app);
 require('./app/service/userDetails.js')(app);
+require('./app/service/newly.js')(app);
