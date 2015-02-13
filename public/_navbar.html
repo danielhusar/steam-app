@@ -1,31 +1,31 @@
 <nav class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li ng-class="{active: nav == 'index'}">
-        	<a href="#/"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Newly listed</a>
-        </li>
-        <li ng-class="{active: nav == 'search'}">
-        	<a href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
-        </li>
-        <li ng-class="{active: nav == 'settings'}">
-        	<a href="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a>
-        </li>
-      </ul>
-      <div class="avatar">
+	<div class="container">
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li ng-class="{active: nav == 'index'}">
+					<a href="#/"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Newly listed</a>
+				</li>
+				<li ng-class="{active: nav == 'search'}">
+					<a href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
+				</li>
+				<li ng-class="{active: nav == 'settings'}">
+					<a href="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a>
+				</li>
+			</ul>
+			<div class="avatar">
 
-			  <div class="info" ng-if="user.name">
-      		Hi {{user.name}}.<div class="wallet">{{user.balance}}</div>
-      	</div>
-      	<div ng-if="user.name">
-      		<img ng-src="{{user.photo}}" alt="avatar">
-      	</div>
+				<div class="info" ng-if="user.name">
+					Hi {{user.name}}.<div class="wallet">{{user.balance}}</div>
+				</div>
+				<div ng-if="user.name">
+					<img ng-src="{{user.photo}}" alt="avatar">
+				</div>
 
-      	<div ng-if="!user.name">
-      		<img src="public/img/avatar.png" alt="avatar">
-      	</div>
+				<div ng-if="!user.name">
+					<img src="public/img/avatar.png" alt="avatar">
+				</div>
 
-      </div>
-    </div><!-- /.nav-collapse -->
-  </div><!-- /.container -->
+			</div>
+		</div><!-- /.nav-collapse -->
+	</div><!-- /.container -->
 </nav>

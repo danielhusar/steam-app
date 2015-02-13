@@ -20,15 +20,15 @@ module.exports = function (app) {
 					$scope.error = false;
 					$scope.user = data;
 					$scope.settings.sessionid = data.sessionID;
-				  settings.update({
+					settings.update({
 						'steamLogin': $scope.settings.steamLogin,
 						'sessionid': data.sessionID
 					});
 				}, function(reason) {
-				  $scope.error = true;
-				  $scope.user = {};
-				  $scope.settings.sessionid = '';
-				  settings.update({
+					$scope.error = true;
+					$scope.user = {};
+					$scope.settings.sessionid = '';
+					settings.update({
 						'steamLogin': $scope.settings.steamLogin,
 						'sessionid': ''
 					});
