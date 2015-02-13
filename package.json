@@ -4,15 +4,12 @@
   "description": "Steam app",
   "main": "index.html",
   "window": {
-    // "toolbar": false,
-    "resizable": false,
+    "resizable": true,
     "width": 1000,
     "height": 700,
     "min_width": 800,
-    "min_height": 500,
-    "max_width": 1000,
-    "max_height": 700,
-    "position": "mouse"
+    "min_height": 600,
+    "icon": "public/img/icon.png"
   },
   "webkit": {
     "plugin": false,
@@ -22,7 +19,10 @@
   "author": "Daniel Husar",
   "license": "MIT",
   "dependencies": {
-    "diskdb": "^0.1.14"
+    "angular": "^1.3.13",
+    "bootstrap": "^3.3.2",
+    "diskdb": "^0.1.14",
+    "jquery": "^2.1.3"
   },
   "devDependencies": {
     "gulp": "^3.8.11",

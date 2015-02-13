@@ -5,19 +5,19 @@ var gutil = require('gulp-util');
 gulp.task('nw', function () {
 
 	var nw = new NwBuilder({
-		version: 'v0.11.6',
+		version: '0.11.6',
 		files: [ './**'],
-		platforms: ['osx'] // change this to 'win' for/on windows
+		platforms: ['osx64'] // change this to 'win' for/on windows
 	});
 
 	// Log stuff you want
 	nw.on('log', function (msg) {
-		gutil.log('node-webkit-builder', msg);
+		gutil.log('node-webkit-builder:', msg);
 	});
 
 	// Build returns a promise, return it so the task isn't called in parallel
 	return nw.build().catch(function (err) {
-		gutil.log('node-webkit-builder', err);
+		gutil.log('error:', err);
 	});
 
 });
