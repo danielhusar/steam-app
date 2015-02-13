@@ -1,3 +1,80 @@
+html, body {
+	height: 100%;
+	background-color: #333;
+	box-shadow: inset 0 0 100px rgba(0,0,0,.1);
+	color: #fff;
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 body {
-	background: green;
+	padding-top: 100px;
+}
+
+img {
+	max-width: 100%;
+}
+
+#navbar{
+	display: flex !important; /* crappy bootstrap :( */
+	align-items: center;
+}
+
+.avatar {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	line-height: 1.4;
+}
+
+.avatar img {
+	width: 32px;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+
+.avatar .info {
+	padding-right: 20px;
+}
+
+.avatar .wallet {
+	font-size: 12px;
+}
+
+.settings form {
+	max-width: 800px;
+}
+
+.form-control {
+	background: #665252;
+	border-color: #332A2A;
+	color: white;
+	outline: none;
+}
+
+button,
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+	outline: none;
+}
+
+.form-control:focus {
+	box-shadow: none;
+}
+
+.small-field {
+	width: 70px;
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+	background-color: #3C3939;
+	border-color: #332A2A;
+}
+
+.alert-danger {
+	color: #FFFFFF;
+	background-color: #FF6B6B;
+	border-color: #575757;
 }

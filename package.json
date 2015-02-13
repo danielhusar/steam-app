@@ -1,5 +1,5 @@
 {
-  "name": "steam.app",
+  "name": "steam-app",
   "version": "0.0.1",
   "description": "Steam app",
   "main": "index.html",
@@ -9,7 +9,9 @@
     "height": 700,
     "min_width": 800,
     "min_height": 600,
-    "icon": "public/img/icon.png"
+    "max_width": 1400,
+    "max_height": 1000,
+    "icon": "./public/img/icon.png"
   },
   "webkit": {
     "plugin": false,
@@ -20,9 +22,12 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.3.13",
+    "angular-route": "^1.3.13",
     "bootstrap": "^3.3.2",
+    "cheerio": "^0.18.0",
     "diskdb": "^0.1.14",
-    "jquery": "^2.1.3"
+    "jquery": "^2.1.3",
+    "requestify": "^0.1.16"
   },
   "devDependencies": {
     "gulp": "^3.8.11",

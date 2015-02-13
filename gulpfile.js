@@ -1,12 +1,15 @@
+'use strict';
+
 var NwBuilder = require('node-webkit-builder');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 
-gulp.task('nw', function () {
+gulp.task('default', function () {
 
 	var nw = new NwBuilder({
 		version: '0.11.6',
 		files: [ './**'],
+		macIcns: './public/img/icon.icns',
 		platforms: ['osx64'] // change this to 'win' for/on windows
 	});
 

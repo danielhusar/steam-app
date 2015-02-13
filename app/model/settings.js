@@ -7,11 +7,23 @@ module.exports = {
 		return db.settings.save(data);
 	},
 
-	find: function () {
-		return db.settings.find();
+	get: function () {
+		return db.settings.findOne({'uid' : 'settings'});
 	},
 
-	update: function (id, data) {
+	update: function (data, options) {
+		options = options ? options : {};
+		return db.settings.update({'uid' : 'settings'}, data, options);
+	},
 
+	seeds: function () {
+		if (db.settings.count() === 0) {
+			return db.settings.save({
+				'steamLogin': '',
+				'sessionid': '',
+				'currency': 3,
+				'uid': 'settings'
+			});
+		}
 	}
 };

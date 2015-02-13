@@ -2,14 +2,18 @@
 <html>
 <head>
 	<title>Hello Node Webkit</title>
-	<link type="text/css" rel="stylesheet" media="all" href="node_modules/bootstrap/dist/css/bootstrap.css">
-	<link type="text/css" rel="stylesheet" media="all" href="public/css/app.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" media="all" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" media="all" href="./public/css/app.css">
 </head>
 <body>
-	<h1>Hello world</h1>
 
-	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
-	<script type="text/javascript" src="app/app.js"></script>
+	<div class="wrapper" ng-app="app" ng-view>
+	</div>
+
+	<script type="text/javascript" src="./node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="./node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="./node_modules/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="./app/app.js"></script>
 </body>
 </html>

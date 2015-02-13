@@ -1,17 +1,32 @@
 'use strict';
 
-var db = require('./app/model/settings.js');
+require('./app/model/settings.js').seeds();
 
-db.save({
-	"timeot": 500,
-	"hash": 700,
-	"test": "bla"
-});
+var app = angular.module('app', ['ngRoute'])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: './public/index.html',
+        controller: 'IndexController'
+      })
+      .when('/search', {
+        templateUrl: './public/search.html',
+        controller: 'SearchController'
+      })
+      .when('/settings', {
+        templateUrl: './public/settings.html',
+        controller: 'SettingsController'
+      })
+      .otherwise({
+        redirectTo: '/',
+      });
+  })
+  .config(function ($anchorScrollProvider) {
+    $anchorScrollProvider.disableAutoScrolling();
+  });
 
-db.save({
-	"timeot": 500,
-	"hash": 700,
-	"test": "bla"
-});
-
-console.log(db.find());
+require('./app/controller/index.js')(app);
+require('./app/controller/search.js')(app);
+require('./app/controller/settings.js')(app);
+require('./app/service/settings.js')(app);
+require('./app/service/userDetails.js')(app);
