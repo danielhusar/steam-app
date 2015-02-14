@@ -12,12 +12,12 @@ module.exports = function (app) {
 			$scope.user = data;
 		});
 
-		$interval(function () {
+		//$interval(function () {
 			NewlyService.get().then(function (data) {
 				items = data.concat(items);
 				$scope.items = items;
 			});
-		}, 1000);
+		//}, 1000);
 
 
 	});

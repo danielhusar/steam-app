@@ -2,10 +2,29 @@
 
 <div class="container">
 
-	<div class="list-group">
-		<div class="list-group-item" ng-repeat="item in items">
-		  <h4 class="list-group-item-heading">{{item.name}}</h4>
-		  <p class="list-group-item-text">{{item.game}}</p>
+	<div class="items">
+
+		<div class="item" ng-repeat="item in items">
+			<div class="image">
+				<img src="{{item.image}}" alt="">
+			</div>
+			<div class="info">
+				<h3>{{item.name}}</h3>
+				<p>{{item.game}}</p>
+			</div>
+			<div class="buy">
+				<p>{{item.priceFee}} &euro;</p>
+				<div class="cta">
+					<button type="button" class="btn btn-primary" ng-click='buy()'>Buy</button>
+					<div class="spinner">
+					  <div class="bounce1"></div>
+					  <div class="bounce2"></div>
+					  <div class="bounce3"></div>
+					</div>
+					<span></span>
+				</div>
+			</div>
 		</div>
+
 	</div>
 </div>
