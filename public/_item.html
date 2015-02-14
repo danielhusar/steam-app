@@ -1,0 +1,21 @@
+<div class="item">
+	<div class="image">
+		<img ng-src="{{data.image}}" alt="">
+	</div>
+	<div class="info">
+		<h3>{{data.name}}</h3>
+		<p>{{data.game}}</p>
+	</div>
+	<div class="buy">
+		<p>{{data.priceFee}} <span ng-if="data.priceFee != 'Sold!'">&euro;</span></p>
+		<div class="cta">
+			<button type="button" class="btn btn-primary" ng-click='buy(data)' ng-if="data.priceFee != 'Sold!'">Buy</button>
+			<div class="spinner">
+			  <div class="bounce1"></div>
+			  <div class="bounce2"></div>
+			  <div class="bounce3"></div>
+			</div>
+			<span></span>
+		</div>
+	</div>
+</div>

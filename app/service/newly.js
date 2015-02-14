@@ -2,6 +2,8 @@
 
 var cheerio = require('cheerio');
 var req = require('../lib/request.js');
+var settings = require('../model/newly.js');
+
 
 module.exports = function (app) {
 	app.service('NewlyService', function ($q, SettingsService) {
@@ -20,8 +22,8 @@ module.exports = function (app) {
 							name: $this.find('.market_listing_item_name').text(),
 							game: $this.find('.market_listing_game_name').text(),
 							url: $this.find('.market_listing_item_name_link').attr('href'),
-							priceNoFee: $this.find('.market_listing_price_without_fee').text().replace(/($|€)/gi, '').trim(),
-							priceFee: $this.find('.market_listing_price_with_fee').text().replace(/($|€)/gi, '').trim(),
+							priceNoFee: $this.find('.market_listing_price_without_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').trim(),
+							priceFee: $this.find('.market_listing_price_with_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').trim(),
 							id: $this.html().match(/listing\_sell\_new\_(.*)\_image/)[1]
 					  };
 					  data.push(item);
@@ -40,6 +42,10 @@ module.exports = function (app) {
 				get(deferred);
 
 				return deferred.promise;
+			},
+
+			settings: function () {
+				return settings.get();
 			}
 
 		};

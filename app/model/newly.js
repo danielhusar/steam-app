@@ -19,18 +19,22 @@ module.exports = {
 	seeds: function () {
 		if (db.newly.count() === 0) {
 			return db.newly.save({
-				'search': '',
-				'rate': '',
+				'items': 'knife,karambit,bayonet,awp,m4a4,m4a1,ak-47,glock-18',
+				'game': 'Counter-Strike: Global Offensive',
+				'rate': '500',
 				'autobuy': [
 					{
+						'enable': false,
 						'name': '',
 						'price': ''
 					},
 					{
+						'enable': false,
 						'name': '',
 						'price': ''
 					},
 					{
+						'enable': false,
 						'name': '',
 						'price': ''
 					}

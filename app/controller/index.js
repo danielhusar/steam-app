@@ -7,6 +7,7 @@ module.exports = function (app) {
 	app.controller('IndexController', function ($scope, $interval, UserDetailsService, NewlyService) {
 		$scope.nav = 'index';
 		$scope.items = items;
+		$scope.settings = NewlyService.settings();
 
 		UserDetailsService.get().then(function (data) {
 			$scope.user = data;
