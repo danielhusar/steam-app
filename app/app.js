@@ -18,6 +18,10 @@ var app = angular.module('app', ['ngRoute'])
         templateUrl: './public/settings.html',
         controller: 'SettingsController'
       })
+      .when('/basket', {
+        templateUrl: './public/basket.html',
+        controller: 'BasketController'
+      })
       .otherwise({
         redirectTo: '/',
       });
@@ -29,6 +33,7 @@ var app = angular.module('app', ['ngRoute'])
 require('./app/controller/index.js')(app);
 require('./app/controller/search.js')(app);
 require('./app/controller/settings.js')(app);
+require('./app/controller/basket.js')(app);
 require('./app/service/settings.js')(app);
 require('./app/service/userDetails.js')(app);
 require('./app/service/newly.js')(app);
