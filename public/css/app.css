@@ -111,6 +111,7 @@ fieldset[disabled] .form-control {
 	font-weight: 300;
 	margin: 0 0 8px;
 	letter-spacing: 1px;
+	cursor: pointer;
 }
 
 .item p {
