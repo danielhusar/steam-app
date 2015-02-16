@@ -8,6 +8,7 @@ html, body {
 
 body {
 	padding-top: 100px;
+	overflow-y: scroll;
 }
 
 img {
@@ -52,9 +53,22 @@ img {
 	outline: none;
 }
 
+.input-group-addon {
+	background: #665252;
+	border-color: #332A2A;
+}
+
 button,
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
 	outline: none;
+}
+
+button.offset {
+	margin-left: 10px;
+}
+
+label {
+	cursor: pointer;
 }
 
 .form-control:focus {

@@ -2,24 +2,48 @@
 
 module.exports = function (app) {
 
-	var items = [];
+	var intervalPromise;
+	var interval = false;
 
-	app.controller('IndexController', function ($scope, $interval, UserDetailsService, NewlyService) {
+	app.controller('IndexController', function ($scope, $interval, SettingsService, UserDetailsService, NewlyService) {
 		$scope.nav = 'index';
-		$scope.items = items;
-		$scope.settings = NewlyService.settings();
-
+		$scope.settings = SettingsService.newly.get();
 		UserDetailsService.get().then(function (data) {
 			$scope.user = data;
 		});
 
-		//$interval(function () {
-			NewlyService.get().then(function (data) {
-				items = data.concat(items);
-				$scope.items = items;
-			});
-		//}, 1000);
+		$scope.interval = interval;
+		$scope.items = NewlyService.cache();
 
+		// Angular view stop updating when changing routes and $interval is in progress so restart it
+		if (interval) {
+			clearInt();
+			startInt();
+		}
+
+		$scope.start = function () {
+			SettingsService.newly.set($scope.settings);
+			startInt();
+		};
+		$scope.stop = clearInt;
+		$scope.clear = function () {
+			NewlyService.clearCache();
+			$scope.items = NewlyService.cache();
+		};
+
+		function startInt () {
+			$scope.interval = interval = true;
+			intervalPromise = $interval(function () {
+				NewlyService.get($scope.settings).then(function (data) {
+					$scope.items = data;
+				});
+			}, $scope.settings.rate);
+		}
+
+		function clearInt () {
+			$scope.interval = interval = false;
+			$interval.cancel(intervalPromise);
+		}
 
 	});
 };

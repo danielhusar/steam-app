@@ -1,14 +1,14 @@
 'use strict';
 
+var _ = require('lodash');
 var cheerio = require('cheerio');
 var req = require('../lib/request.js');
-var settings = require('../model/newly.js');
-
+var items = [];
 
 module.exports = function (app) {
-	app.service('NewlyService', function ($q, SettingsService) {
+	app.service('NewlyService', function ($q, SettingsService, FilterItemsService) {
 
-		var get = function (deferred) {
+		var get = function (deferred, settings) {
 			req('http://steamcommunity.com/market/recent?country=IE&language=english&currency=3')
 				.then(function (response) {
 					var body = response.getBody();
@@ -29,23 +29,32 @@ module.exports = function (app) {
 					  data.push(item);
 					});
 
-					deferred.resolve(data);
+					// Reduce to only uniq intems
+					items = _.uniq(data.concat(items), function (i) {
+						return i.id;
+					});
+
+					// Filter items according to our settings
+					items = FilterItemsService(items, settings.game, settings.items);
+					deferred.resolve(items);
 
 				}, deferred.reject);
 		};
 
 		return {
 
-			get: function (steamLogin) {
+			get: function (settings) {
 				var deferred = $q.defer();
-
-				get(deferred);
-
+				get(deferred, settings);
 				return deferred.promise;
 			},
 
-			settings: function () {
-				return settings.get();
+			cache: function () {
+				return items;
+			},
+
+			clearCache: function () {
+				items = [];
 			}
 
 		};

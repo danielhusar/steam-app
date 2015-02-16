@@ -36,7 +36,7 @@ module.exports = function (app) {
 				var deferred = $q.defer();
 
 				if (steamLogin || !details.name) {
-					steamLogin = steamLogin ? steamLogin : (SettingsService.get()).steamLogin;
+					steamLogin = steamLogin ? steamLogin : (SettingsService.user.get()).steamLogin;
 					parse(steamLogin, deferred);
 				} else {
 					deferred.resolve(details);

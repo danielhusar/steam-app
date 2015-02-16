@@ -18,15 +18,32 @@
 		<div class="form-group">
 			<label for="rate" class="col-sm-2 control-label">Refresh Rate</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control small-field" id="rate" name="currency" ng-model="settings.rate">
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-success" ng-click='start()'>Start</button>
+				<input type="text" class="form-control small-field" id="rate" name="settings.rate" ng-model="settings.rate">
 			</div>
 		</div>
 
+		<div class="form-group" ng-repeat="autobuy in settings.autobuy">
+			<label for="autobuy-{{$index}}" class="col-sm-2 control-label">Auto Buy</label>
+			<div class="col-sm-8">
+				<div class="input-group">
+		      <span class="input-group-addon">
+		        <input type="checkbox" ng-model="settings.autobuy[$index].enable">
+		      </span>
+		      <input type="text" class="form-control" id="autobuy-{{$index}}" ng-model="settings.autobuy[$index].name" placeholder="item name">
+		    </div><!-- /input-group -->
+			</div>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="rate" ng-model="settings.autobuy[$index].price" placeholder="min price">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-8">
+				<button type="submit" class="btn btn-success" ng-click='start()' ng-if="!interval">Start</button>
+				<button type="submit" class="btn btn-warning" ng-click='stop()' ng-if="interval">Stop</button>
+				<button type="submit" class="btn btn-warning offset" ng-click='clear()' ng-if="!interval && items.length">Clear</button>
+			</div>
+		</div>
 	</form>
 
 	<div class="items">

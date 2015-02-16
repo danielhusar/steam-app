@@ -1,6 +1,6 @@
 'use strict';
 
-require('./app/model/settings.js').seeds();
+require('./app/model/user.js').seeds();
 require('./app/model/newly.js').seeds();
 
 var app = angular.module('app', ['ngRoute'])

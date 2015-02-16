@@ -1,13 +1,22 @@
 'use strict';
 
-var settings = require('../model/settings.js');
+var user = require('../model/user.js');
+var newly = require('../model/newly.js');
 
 module.exports = function (app) {
 	app.service('SettingsService', function () {
 		return {
-			get: function() {
-				return settings.get();
+
+			user: {
+				get: user.get,
+				set: user.update
+			},
+
+			newly: {
+				get: newly.get,
+				set: newly.update
 			}
+
 		};
 	});
 };

@@ -1,17 +1,14 @@
 'use strict';
 
-var settings = require('../model/settings.js');
-
 module.exports = function (app) {
 	app.controller('SettingsController', function ($scope, SettingsService, UserDetailsService) {
 
 		$scope.nav = 'settings';
-		$scope.settings = SettingsService.get();
+		$scope.settings = SettingsService.user.get();
 
 		UserDetailsService.get().then(function (data) {
 			$scope.user = data;
 		});
-
 
 		$scope.save = function () {
 
@@ -20,7 +17,7 @@ module.exports = function (app) {
 					$scope.error = false;
 					$scope.user = data;
 					$scope.settings.sessionid = data.sessionID;
-					settings.update({
+					SettingsService.user.set({
 						'steamLogin': $scope.settings.steamLogin,
 						'sessionid': data.sessionID
 					});
@@ -28,7 +25,7 @@ module.exports = function (app) {
 					$scope.error = true;
 					$scope.user = {};
 					$scope.settings.sessionid = '';
-					settings.update({
+					SettingsService.user.set({
 						'steamLogin': $scope.settings.steamLogin,
 						'sessionid': ''
 					});

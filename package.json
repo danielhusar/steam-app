@@ -1,7 +1,7 @@
 {
-  "name": "steam-app",
+  "name": "steam-market",
   "version": "0.0.1",
-  "description": "Steam app",
+  "description": "Steam market",
   "main": "index.html",
   "window": {
     "resizable": true,
@@ -9,8 +9,8 @@
     "height": 700,
     "min_width": 800,
     "min_height": 600,
-    "max_width": 1400,
-    "max_height": 1000,
+    "max_width": 1200,
+    "max_height": 2000,
     "icon": "./public/img/icon.png"
   },
   "webkit": {

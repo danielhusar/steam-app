@@ -10,6 +10,7 @@ gulp.task('default', function () {
 		version: '0.11.6',
 		files: [ './**'],
 		macIcns: './public/img/icon.icns',
+		winIco: './public/img/icon.ico',
 		platforms: ['osx64'] // change this to 'win' for/on windows
 	});
 
