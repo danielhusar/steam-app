@@ -12,8 +12,6 @@ module.exports = function (app) {
 
 		$scope.save = function () {
 
-			console.log('sav');
-
 			UserDetailsService.get($scope.settings.steamLogin)
 				.then(function (data) {
 					$scope.error = false;

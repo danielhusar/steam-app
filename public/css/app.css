@@ -96,6 +96,12 @@ fieldset[disabled] .form-control {
 	padding-bottom: 20px;
 }
 
+iframe.hidden {
+	width: 1px;
+	height: 1px;
+	opacity: .001;
+}
+
 .item {
 	margin-top: 5px;
 	display: flex;

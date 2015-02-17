@@ -22,10 +22,15 @@ module.exports = function (app) {
 							name: SanitizeNameService($this.find('.market_listing_item_name').text()),
 							game: $this.find('.market_listing_game_name').text(),
 							url: $this.find('.market_listing_item_name_link').attr('href'),
-							priceNoFee: $this.find('.market_listing_price_without_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').trim(),
-							priceFee: $this.find('.market_listing_price_with_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').trim(),
+							priceNoFee: $this.find('.market_listing_price_without_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').replace(',', '.').trim(),
+							priceFee: $this.find('.market_listing_price_with_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').replace(',', '.').trim(),
 							id: $this.html().match(/listing\_sell\_new\_(.*)\_image/)[1]
 					  };
+
+					  if (item.priceFee !== 'Sold!') {
+					  	item.priceNoFee = Number(item.priceNoFee);
+					  	item.priceFee = Number(item.priceFee);
+					  }
 					  data.push(item);
 					});
 
