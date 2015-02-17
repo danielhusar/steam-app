@@ -21,6 +21,9 @@ module.exports = function (app) {
 						tmp.balance = $('#header_wallet_balance').text();
 						tmp.sessionID = body.match(/var g_sessionID = \"(.*)\"\;/)[1];
 
+						//tmp.currency = body.match(/\"wallet_currency\"\:(.*)\"\;/)[1];
+						//tmp.country = body.match(/var g_strLanguage = \"(.*)\"\;/)[1];
+
 						deferred.resolve(tmp);
 						details = tmp;
 					} else {

@@ -38,4 +38,6 @@ require('./app/service/settings.js')(app);
 require('./app/service/userDetails.js')(app);
 require('./app/service/newly.js')(app);
 require('./app/service/filterItems.js')(app);
+require('./app/service/buy.js')(app);
+require('./app/service/sanitizeName.js')(app);
 require('./app/directive/item.js')(app);

@@ -106,6 +106,10 @@ fieldset[disabled] .form-control {
 	max-width: 800px;
 }
 
+.item.buying {
+	display: none;
+}
+
 .item img {
 	width: 62px;
 }

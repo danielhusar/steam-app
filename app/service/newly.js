@@ -6,9 +6,9 @@ var req = require('../lib/request.js');
 var items = [];
 
 module.exports = function (app) {
-	app.service('NewlyService', function ($q, SettingsService, FilterItemsService) {
+	app.service('NewlyService', function ($q, SettingsService, FilterItemsService, SanitizeNameService) {
 
-		var get = function (deferred, settings) {
+		function get (deferred, settings) {
 			req('http://steamcommunity.com/market/recent?country=IE&language=english&currency=3')
 				.then(function (response) {
 					var body = response.getBody();
@@ -19,7 +19,7 @@ module.exports = function (app) {
 					  var $this = $(this);
 					  var item = {
 							image: $this.find('.market_listing_item_img').attr('src'),
-							name: $this.find('.market_listing_item_name').text(),
+							name: SanitizeNameService($this.find('.market_listing_item_name').text()),
 							game: $this.find('.market_listing_game_name').text(),
 							url: $this.find('.market_listing_item_name_link').attr('href'),
 							priceNoFee: $this.find('.market_listing_price_without_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').trim(),
@@ -35,11 +35,11 @@ module.exports = function (app) {
 					});
 
 					// Filter items according to our settings
-					items = FilterItemsService(items, settings.game, settings.items);
+					items = FilterItemsService.filter(items, settings.game, settings.items);
 					deferred.resolve(items);
 
 				}, deferred.reject);
-		};
+		}
 
 		return {
 

@@ -3,20 +3,22 @@
 var gui = global.window.nwDispatcher.requireNwGui();
 
 module.exports = function (app) {
-	app.directive('item', function () {
+	app.directive('item', function (BuyService) {
 		return {
 			restrict: 'E',
 			templateUrl: './public/_item.html',
 			scope: {
 				data: '='
 			},
-			link: function ($scope) {
-				$scope.buy = function (item) {
-					console.log(item);
-				};
+			link: function ($scope, element) {
 
 				$scope.url = function (url) {
 					gui.Shell.openExternal(url);
+				};
+
+				$scope.buy = function (item) {
+					BuyService.buy(item);
+					$scope.data.status = 'buying';
 				};
 			}
 		};

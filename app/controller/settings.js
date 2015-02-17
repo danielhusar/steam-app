@@ -12,11 +12,14 @@ module.exports = function (app) {
 
 		$scope.save = function () {
 
+			console.log('sav');
+
 			UserDetailsService.get($scope.settings.steamLogin)
 				.then(function (data) {
 					$scope.error = false;
 					$scope.user = data;
 					$scope.settings.sessionid = data.sessionID;
+
 					SettingsService.user.set({
 						'steamLogin': $scope.settings.steamLogin,
 						'sessionid': data.sessionID
@@ -25,6 +28,7 @@ module.exports = function (app) {
 					$scope.error = true;
 					$scope.user = {};
 					$scope.settings.sessionid = '';
+
 					SettingsService.user.set({
 						'steamLogin': $scope.settings.steamLogin,
 						'sessionid': ''

@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 module.exports = function (app) {
 
 	var intervalPromise;
@@ -14,6 +16,10 @@ module.exports = function (app) {
 
 		$scope.interval = interval;
 		$scope.items = NewlyService.cache();
+
+		$scope.$watch('settings', _.debounce(function (data) {
+			SettingsService.newly.set(data);
+		}, 1000), true);
 
 		// Angular view stop updating when changing routes and $interval is in progress so restart it
 		if (interval) {
