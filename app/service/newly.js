@@ -1,36 +1,25 @@
 'use strict';
 
 var _ = require('lodash');
+var fmt = require('simple-fmt');
 var cheerio = require('cheerio');
 var req = require('../lib/request.js');
 var items = [];
 
 module.exports = function (app) {
-	app.service('NewlyService', function ($q, SettingsService, FilterItemsService, SanitizeNameService) {
+	app.service('NewlyService', function ($q, FilterItemsFactory, ItemDataFactory, UserDetailsService) {
 
 		function get (deferred, settings) {
-			req('http://steamcommunity.com/market/recent?country=IE&language=english&currency=3')
+
+			var settings = UserDetailsService.get();
+			req(fmt('http://steamcommunity.com/market/recent?country={0}&language={1}&currency={2}', settings.country, settings.language, settings.currency))
 				.then(function (response) {
 					var body = response.getBody();
 					var $ = cheerio.load('<div>' + body.results_html + '</div>');
 					var data = [];
 
 					$('.market_listing_row').each(function(i, elem) {
-					  var $this = $(this);
-					  var item = {
-							image: $this.find('.market_listing_item_img').attr('src'),
-							name: SanitizeNameService($this.find('.market_listing_item_name').text()),
-							game: $this.find('.market_listing_game_name').text(),
-							url: $this.find('.market_listing_item_name_link').attr('href'),
-							priceNoFee: $this.find('.market_listing_price_without_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').replace(',', '.').trim(),
-							priceFee: $this.find('.market_listing_price_with_fee').text().replace(/($|€)/gi, '').replace(/\-/gi, '0').replace(',', '.').trim(),
-							id: $this.html().match(/listing\_sell\_new\_(.*)\_image/)[1]
-					  };
-
-					  if (item.priceFee !== 'Sold!') {
-					  	item.priceNoFee = Number(item.priceNoFee);
-					  	item.priceFee = Number(item.priceFee);
-					  }
+					  var item = ItemDataFactory($(this));
 					  data.push(item);
 					});
 
@@ -40,7 +29,7 @@ module.exports = function (app) {
 					});
 
 					// Filter items according to our settings
-					items = FilterItemsService.filter(items, settings.game, settings.items);
+					items = FilterItemsFactory.filter(items, settings.game, settings.items);
 					deferred.resolve(items);
 
 				}, deferred.reject);

@@ -93,13 +93,21 @@ fieldset[disabled] .form-control {
 }
 
 .items {
-	padding-bottom: 20px;
+	padding: 20px 0;
 }
 
-iframe.hidden {
+.ifr {
 	width: 1px;
 	height: 1px;
 	opacity: .001;
+}
+
+[data-page="settings"] .ifr {
+	width: 980px;
+	height: 900px;
+	opacity: 1;
+	margin: 0 10px;
+	border: none;
 }
 
 .item {
@@ -109,7 +117,6 @@ iframe.hidden {
 	border: 1px solid #332A2A;
 	background-color: #3C3939;
 	padding: 10px;
-	max-width: 800px;
 }
 
 .item.buying {

@@ -26,17 +26,20 @@ module.exports = {
 					{
 						'enable': false,
 						'name': '',
-						'price': ''
+						'price': '',
+						'quantity': ''
 					},
 					{
 						'enable': false,
 						'name': '',
-						'price': ''
+						'price': '',
+						'quantity': ''
 					},
 					{
 						'enable': false,
 						'name': '',
-						'price': ''
+						'price': '',
+						'quantity': ''
 					}
 				],
 				'uid': 'newly'

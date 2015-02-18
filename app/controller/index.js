@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var $ = global.window.jQuery;
 
 module.exports = function (app) {
 
@@ -9,10 +10,8 @@ module.exports = function (app) {
 
 	app.controller('IndexController', function ($scope, $interval, SettingsService, UserDetailsService, NewlyService) {
 		$scope.nav = 'index';
+		$('[data-page]').attr('data-page', 'index');
 		$scope.settings = SettingsService.newly.get();
-		UserDetailsService.get().then(function (data) {
-			$scope.user = data;
-		});
 
 		$scope.interval = interval;
 		$scope.items = NewlyService.cache();

@@ -5,9 +5,11 @@
 				<li ng-class="{active: nav == 'index'}">
 					<a href="#/"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Newly listed</a>
 				</li>
+				<!--
 				<li ng-class="{active: nav == 'search'}">
 					<a href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
 				</li>
+				-->
 				<li ng-class="{active: nav == 'basket'}">
 					<a href="#basket"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Basket</a>
 				</li>
@@ -15,20 +17,6 @@
 					<a href="#settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a>
 				</li>
 			</ul>
-			<div class="avatar">
-
-				<div class="info" ng-if="user.name">
-					Hi {{user.name}}.<div class="wallet">{{user.balance}}</div>
-				</div>
-				<div ng-if="user.name">
-					<img ng-src="{{user.photo}}" alt="avatar">
-				</div>
-
-				<div ng-if="!user.name">
-					<img src="public/img/avatar.png" alt="avatar">
-				</div>
-
-			</div>
 		</div><!-- /.nav-collapse -->
 	</div><!-- /.container -->
 </nav>

@@ -1,37 +1,27 @@
 'use strict';
 
+var $ = global.window.jQuery;
+
 module.exports = function (app) {
 	app.controller('SettingsController', function ($scope, SettingsService, UserDetailsService) {
-
 		$scope.nav = 'settings';
-		$scope.settings = SettingsService.user.get();
+		$('[data-page]').attr('data-page', 'settings');
 
-		UserDetailsService.get().then(function (data) {
-			$scope.user = data;
-		});
+		$scope.settings = UserDetailsService.get();
 
 		$scope.save = function () {
+			var iframe = $('#ifr')[0];
+			console.log(iframe.contentWindow);
 
-			UserDetailsService.get($scope.settings.steamLogin)
-				.then(function (data) {
-					$scope.error = false;
-					$scope.user = data;
-					$scope.settings.sessionid = data.sessionID;
+			$scope.settings = {
+				currency: iframe.contentWindow.g_rgWalletInfo.wallet_currency,
+				country: iframe.contentWindow.g_strCountryCode,
+				language: iframe.contentWindow.g_strLanguage,
+				currencySign: UserDetailsService.currency(iframe.contentWindow.g_rgWalletInfo.wallet_currency)
+			};
 
-					SettingsService.user.set({
-						'steamLogin': $scope.settings.steamLogin,
-						'sessionid': data.sessionID
-					});
-				}, function(reason) {
-					$scope.error = true;
-					$scope.user = {};
-					$scope.settings.sessionid = '';
-
-					SettingsService.user.set({
-						'steamLogin': $scope.settings.steamLogin,
-						'sessionid': ''
-					});
-				});
+			SettingsService.user.set($scope.settings);
+			UserDetailsService.clearCache();
 
 		};
 

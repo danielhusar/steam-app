@@ -1,12 +1,13 @@
 'use strict';
 
-module.exports = function (app) {
-	app.controller('BasketController', function ($scope, UserDetailsService) {
-		$scope.nav = 'basket';
+var $ = global.window.jQuery;
 
-		UserDetailsService.get().then(function (data) {
-			$scope.user = data;
-		});
+module.exports = function (app) {
+	app.controller('BasketController', function ($scope, BuyService) {
+		$scope.nav = 'basket';
+		$('[data-page]').attr('data-page', 'basket');
+
+		$scope.items = BuyService.get();
 
 	});
 };

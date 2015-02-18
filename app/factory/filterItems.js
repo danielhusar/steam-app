@@ -4,10 +4,10 @@ var escapeStringRegexp = require('escape-string-regexp');
 var blacklist = [];
 
 module.exports = function (app) {
-	app.service('FilterItemsService', function (SanitizeNameService) {
+	app.factory('FilterItemsFactory', function (SanitizeNameFactory) {
 
 		function filter (data, game, items) {
-			var regexp = new RegExp(escapeStringRegexp(SanitizeNameService(items)).replace(/^\,|\,$/g, '').replace(/\,/gi, '|'), 'gi');
+			var regexp = new RegExp(escapeStringRegexp(SanitizeNameFactory(items)).replace(/\,/gi, '|'), 'gi');
 
 			return data.filter(function (item) {
 				var ret = true;
