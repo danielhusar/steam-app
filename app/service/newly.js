@@ -11,8 +11,8 @@ module.exports = function (app) {
 
 		function get (deferred, settings) {
 
-			var settings = UserDetailsService.get();
-			req(fmt('http://steamcommunity.com/market/recent?country={0}&language={1}&currency={2}', settings.country, settings.language, settings.currency))
+			var user = UserDetailsService.get();
+			req(fmt('http://steamcommunity.com/market/recent?country={0}&language={1}&currency={2}', user.country, user.language, user.currency))
 				.then(function (response) {
 					var body = response.getBody();
 					var $ = cheerio.load('<div>' + body.results_html + '</div>');
@@ -28,8 +28,12 @@ module.exports = function (app) {
 						return i.id;
 					});
 
+					console.log(items);
+
 					// Filter items according to our settings
 					items = FilterItemsFactory.filter(items, settings.game, settings.items);
+
+
 					deferred.resolve(items);
 
 				}, deferred.reject);
