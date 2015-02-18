@@ -27,14 +27,9 @@ module.exports = function (app) {
 						return i.id;
 					});
 
-					console.log(items);
-
 					// Filter items according to our settings
 					items = FilterItemsFactory.filter(items, settings.game, settings.items);
-
-
 					deferred.resolve(items);
-
 				}, deferred.reject);
 		}
 
