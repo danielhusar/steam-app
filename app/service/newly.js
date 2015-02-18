@@ -10,7 +10,6 @@ module.exports = function (app) {
 	app.service('NewlyService', function ($q, FilterItemsFactory, ItemDataFactory, UserDetailsService) {
 
 		function get (deferred, settings) {
-
 			var user = UserDetailsService.get();
 			req(fmt('http://steamcommunity.com/market/recent?country={0}&language={1}&currency={2}', user.country, user.language, user.currency))
 				.then(function (response) {
