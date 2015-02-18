@@ -11,7 +11,6 @@ module.exports = function (app) {
 
 		$scope.save = function () {
 			var iframe = $('#ifr')[0];
-			console.log(iframe.contentWindow);
 
 			$scope.settings = {
 				currency: iframe.contentWindow.g_rgWalletInfo.wallet_currency,

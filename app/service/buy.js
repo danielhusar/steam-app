@@ -3,6 +3,7 @@
 var fmt = require('simple-fmt');
 var gui = global.window.nwDispatcher.requireNwGui();
 var win = gui.Window.get();
+var $ = global.window.jQuery;
 var items = [];
 var buy = '$J.ajax({ \
 							url:"https://steamcommunity.com/market/buylisting/{0}", \
@@ -28,10 +29,14 @@ module.exports = function (app) {
 			buy: function (item) {
 				items.push(item);
 				FilterItemsFactory.set(item.id);
-				// win.eval(
-				// 	$('#ifr')[0],
-				// 	fmt(buy, item.id, item.priceFee * 100, item.priceNoFee * 100, ((item.priceFee - item.priceNoFee) * 100))
-				// );
+				var script = fmt(buy, item.id, item.priceFee * 100, item.priceNoFee * 100, ((item.priceFee - item.priceNoFee) * 100));
+				console.log(script);
+
+				win.eval(
+					$('#ifr')[0],
+					script
+				);
+
 			},
 
 			get: function () {
