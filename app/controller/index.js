@@ -12,7 +12,6 @@ module.exports = function (app) {
 		$scope.nav = 'index';
 		$('[data-page]').attr('data-page', 'index');
 		$scope.settings = SettingsService.newly.get();
-
 		$scope.interval = interval;
 		$scope.items = NewlyService.cache();
 

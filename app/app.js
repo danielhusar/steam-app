@@ -43,5 +43,6 @@ require('./app/service/buy.js')(app);
 require('./app/factory/sanitizeName.js')(app);
 require('./app/factory/itemData.js')(app);
 require('./app/factory/filterItems.js')(app);
+require('./app/factory/autoBuy.js')(app);
 
 require('./app/directive/item.js')(app);

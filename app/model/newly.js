@@ -24,19 +24,16 @@ module.exports = {
 				'rate': '500',
 				'autobuy': [
 					{
-						'enable': false,
 						'name': '',
 						'price': '',
 						'quantity': ''
 					},
 					{
-						'enable': false,
 						'name': '',
 						'price': '',
 						'quantity': ''
 					},
 					{
-						'enable': false,
 						'name': '',
 						'price': '',
 						'quantity': ''

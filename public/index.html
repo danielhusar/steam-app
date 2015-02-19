@@ -24,16 +24,14 @@
 
 		<div class="form-group" ng-repeat="autobuy in settings.autobuy">
 			<label for="autobuy-{{$index}}" class="col-sm-2 control-label">Auto Buy</label>
-			<div class="col-sm-8">
-				<div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" ng-model="settings.autobuy[$index].enable">
-		      </span>
-		      <input type="text" class="form-control" id="autobuy-{{$index}}" ng-model="settings.autobuy[$index].name" placeholder="item name">
-		    </div><!-- /input-group -->
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="autobuy-{{$index}}" ng-model="settings.autobuy[$index].name" placeholder="item name">
 			</div>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="rate" ng-model="settings.autobuy[$index].price" placeholder="min price">
+				<input type="text" class="form-control" id="rate" ng-model="settings.autobuy[$index].price" placeholder="max price">
+			</div>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="quantity" ng-model="settings.autobuy[$index].quantity" placeholder="quantity">
 			</div>
 		</div>
 
