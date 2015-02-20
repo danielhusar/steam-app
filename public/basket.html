@@ -1,6 +1,15 @@
 <div ng-include="'public/_navbar.html'"></div>
 
 <div class="container">
+
+	<form class="form-horizontal">
+		<div class="form-group">
+			<div class="col-sm-8">
+				<button type="submit" class="btn btn-warning" ng-click='clear()' ng-if="!interval">CLear</button>
+			</div>
+		</div>
+	</form>
+
 	<div class="items list">
 		<item ng-repeat="item in items" data="item"></item>
 	</div>

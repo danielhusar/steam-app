@@ -16,8 +16,8 @@ module.exports = function (app) {
 				};
 
 				if (item.priceFee !== 'Sold!') {
-					item.priceNoFee = Number(item.priceNoFee);
-					item.priceFee = Number(item.priceFee);
+					item.priceNoFee = Number(Number(item.priceNoFee).toFixed(2));
+					item.priceFee = Number(Number(item.priceFee).toFixed(2));
 				}
 
 				return item;

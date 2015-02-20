@@ -55,6 +55,11 @@ module.exports = function (app) {
 			$interval.cancel(settingsInterval);
 		}
 
+		// No need to update those when we are out of view
+		$scope.$on('$routeChangeStart', function () {
+	  	$interval.cancel(settingsInterval);
+		});
+
 	});
 };
 

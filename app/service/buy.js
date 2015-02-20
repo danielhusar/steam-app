@@ -44,19 +44,22 @@ module.exports = function (app) {
 				items.push(item);
 				FilterItemsFactory.set(item.id);
 				var script = fmt(buy, item.id, item.priceFee * 100, item.priceNoFee * 100, ((item.priceFee - item.priceNoFee) * 100));
+				//console.log(script);
 
-				win.eval(
-					iframe,
-					script
-				);
+				win.eval(iframe, script);
 
-				setInterval(function () {
-					console.log(iframe.contentWindow.buy);
-				}, 1000);
+				// setInterval(function () {
+				// 	console.log(iframe.contentWindow.buy);
+				// }, 1000);
 
 			},
 
 			get: function () {
+				return items;
+			},
+
+			clear: function () {
+				items = [];
 				return items;
 			}
 		};
