@@ -5,7 +5,8 @@ var $ = global.window.jQuery;
 
 module.exports = function (app) {
 
-	var intervalPromise;
+	var newlyInterval;
+	var settingsInterval;
 	var interval = false;
 
 	app.controller('IndexController', function ($scope, $interval, SettingsService, UserDetailsService, NewlyService) {
@@ -37,16 +38,21 @@ module.exports = function (app) {
 
 		function startInt () {
 			$scope.interval = interval = true;
-			intervalPromise = $interval(function () {
+			newlyInterval = $interval(function () {
 				NewlyService.get($scope.settings).then(function (data) {
 					$scope.items = data;
 				});
 			}, $scope.settings.rate);
+
+			settingsInterval = $interval(function () {
+				$scope.settings = SettingsService.newly.get();
+			}, 2000);
 		}
 
 		function clearInt () {
 			$scope.interval = interval = false;
-			$interval.cancel(intervalPromise);
+			$interval.cancel(newlyInterval);
+			$interval.cancel(settingsInterval);
 		}
 
 	});

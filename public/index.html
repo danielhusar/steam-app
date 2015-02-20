@@ -6,32 +6,32 @@
 		<div class="form-group">
 			<label for="items" class="col-sm-2 control-label">Items</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="items" name="items" ng-model="settings.items">
+				<input type="text" class="form-control" id="items" name="items" ng-model="settings.items" ng-readonly="interval">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="game" class="col-sm-2 control-label">Game</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="game" name="game" ng-model="settings.game">
+				<input type="text" class="form-control" id="game" name="game" ng-model="settings.game" ng-readonly="interval">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="rate" class="col-sm-2 control-label">Refresh Rate</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control small-field" id="rate" name="settings.rate" ng-model="settings.rate">
+				<input type="text" class="form-control small-field" id="rate" name="settings.rate" ng-model="settings.rate" ng-readonly="interval">
 			</div>
 		</div>
 
 		<div class="form-group" ng-repeat="autobuy in settings.autobuy">
 			<label for="autobuy-{{$index}}" class="col-sm-2 control-label">Auto Buy</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="autobuy-{{$index}}" ng-model="settings.autobuy[$index].name" placeholder="item name">
+				<input type="text" class="form-control" id="autobuy-{{$index}}" ng-model="settings.autobuy[$index].name" placeholder="item name" ng-readonly="interval">
 			</div>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="rate" ng-model="settings.autobuy[$index].price" placeholder="max price">
+				<input type="text" class="form-control" id="rate" ng-model="settings.autobuy[$index].price" placeholder="max price" ng-readonly="interval">
 			</div>
 			<div class="col-sm-2">
-				<input type="number" class="form-control" id="quantity" ng-model="settings.autobuy[$index].quantity" placeholder="quantity">
+				<input type="number" class="form-control" id="quantity" ng-model="settings.autobuy[$index].quantity" placeholder="quantity" ng-readonly="interval">
 			</div>
 		</div>
 
