@@ -5,11 +5,11 @@
   "main": "index.html",
   "window": {
     "resizable": true,
-    "width": 1000,
+    "width": 1050,
     "height": 700,
-    "min_width": 1000,
+    "min_width": 1050,
     "min_height": 700,
-    "max_width": 1000,
+    "max_width": 1050,
     "max_height": 2000,
     "icon": "./public/img/icon.png"
   },

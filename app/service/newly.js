@@ -26,9 +26,13 @@ module.exports = function (app) {
 					// Filter items according to our settings
 					data = FilterItemsFactory.filter(data, settings.game, settings.items);
 
+					// Autobuy
+					data.forEach(function (i) {
+						AutoBuyFactory.buy(i, 'newly');
+					});
+
 					// Reduce to only uniq items
 					items = _.uniq(data.concat(items), function (i) {
-						AutoBuyFactory.buy(i, 'newly');
 						return i.id;
 					});
 

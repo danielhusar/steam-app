@@ -20,7 +20,7 @@ module.exports = function (app) {
 				var script = fmt(buy, item.id, (item.priceFee * 100).toFixed(0), (item.priceNoFee * 100).toFixed(0), ((item.priceFee - item.priceNoFee) * 100).toFixed(0) );
 
 				win.eval(iframe, script);
-				item.debug = script.replace(/\\/, '\r\n');
+				item.debug = script;
 
 				// Did we buy it ?
 				var interval = setInterval(function () {
