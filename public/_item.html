@@ -1,6 +1,6 @@
 <div class="item {{data.status}}" id="item-{{data.id}}">
 	<div class="image">
-		<img ng-src="{{data.image}}" alt="">
+		<img ng-src="{{data.image}}" alt="" title="{{data.id}}">
 	</div>
 	<div class="info">
 		<h3 ng-click="url(data.url)">{{data.name}}</h3>
@@ -16,6 +16,11 @@
 			  <div class="bounce3"></div>
 			</div>
 			<span></span>
+		</div>
+
+		<div class="debug">
+			<button type="button" class="btn btn-info" ng-click='popup()'>Debug</button>
+			<pre ng-if="data.popup">{{data.debug}}</pre>
 		</div>
 	</div>
 </div>

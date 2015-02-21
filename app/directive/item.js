@@ -21,6 +21,10 @@ module.exports = function (app) {
 					BuyService.buy(_.clone(item, true));
 					$scope.data.status = 'buying';
 				};
+
+				$scope.popup = function () {
+					$scope.data.popup = !$scope.data.popup;
+				};
 			}
 		};
 	});

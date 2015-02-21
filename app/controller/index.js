@@ -3,8 +3,6 @@
 var _ = require('lodash');
 var $ = require('../lib/query');
 
-console.log(global.window.document.querySelector);
-
 module.exports = function (app) {
 
 	var newlyInterval;

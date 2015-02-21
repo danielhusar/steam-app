@@ -20,17 +20,18 @@ module.exports = function (app) {
 
 					$('.market_listing_row').each(function(i, elem) {
 					  var item = ItemDataFactory($(this));
-					  AutoBuyFactory.buy(item, 'newly');
 					  data.push(item);
 					});
 
+					// Filter items according to our settings
+					data = FilterItemsFactory.filter(data, settings.game, settings.items);
+
 					// Reduce to only uniq items
 					items = _.uniq(data.concat(items), function (i) {
+						AutoBuyFactory.buy(i, 'newly');
 						return i.id;
 					});
 
-					// Filter items according to our settings
-					items = FilterItemsFactory.filter(items, settings.game, settings.items);
 					deferred.resolve(items);
 				}, deferred.reject);
 		}

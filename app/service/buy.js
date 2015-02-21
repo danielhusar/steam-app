@@ -1,58 +1,46 @@
 'use strict';
 
+var fs = require('fs');
 var fmt = require('simple-fmt');
 var gui = global.window.nwDispatcher.requireNwGui();
 var win = gui.Window.get();
-var $ = require('../lib/query');
-var items = [];
-var buy = 'window.buy = window.buy || {}; \
-					 $J.ajax({ \
-							url:"https://steamcommunity.com/market/buylisting/{0}", \
-							type:"POST", \
-							data: { \
-								currency: g_rgWalletInfo.wallet_currency, \
-								fee: {3}, \
-								quantity: 1, \
-								sessionid: g_sessionID, \
-								subtotal: {2}, \
-								total: {1} \
-						}, \
-						crossDomain: true, \
-						xhrFields: { \
-							withCredentials: true \
-						} \
-					}) \
-					.done(function (data) { \
-						window.buy[{0}] = { \
-							success: data \
-						} \
-					}) \
-				  .fail(function (err, text, jqXHR) { \
-				  	window.buy[{0}] = { \
-							err: err, \
-							text: text, \
-							jqXHR: jqXHR \
-						} \
-				  });';
-var iframe = $('#ifr');
 
+var $ = require('../lib/query');
+var buy = fs.readFileSync('./app/lib/buy.txt').toString();
+var items = [];
+var iframe = $('#ifr');
 
 module.exports = function (app) {
 	app.service('BuyService', function (UserDetailsService, FilterItemsFactory) {
 
 		return {
 			buy: function (item) {
-				items.push(item);
+
 				FilterItemsFactory.set(item.id);
-				var script = fmt(buy, item.id, item.priceFee * 100, item.priceNoFee * 100, ((item.priceFee - item.priceNoFee) * 100));
-				//console.log(script);
+				var script = fmt(buy, item.id, (item.priceFee * 100).toFixed(0), (item.priceNoFee * 100).toFixed(0), ((item.priceFee - item.priceNoFee) * 100).toFixed(0) );
 
 				win.eval(iframe, script);
+				item.debug = script.replace(/\\/, '\r\n');
 
-				// setInterval(function () {
-				// 	console.log(iframe.contentWindow.buy);
-				// }, 1000);
+				// Did we buy it ?
+				var interval = setInterval(function () {
+					var status = iframe.contentWindow.buy[item.id.toString()];
+					if (status) {
+						clearInterval(interval);
+						item.status = status.success  ? 'success' : 'error';
+						if (item.error) {
+							item.debug = item.debug + '\r\n\r\n' + JSON.stringify(status.error);
+						}
+					}
+				}, 1000);
 
+				// Timeout
+				setTimeout(function () {
+					clearInterval(interval);
+				}, 15000);
+
+
+				items.push(item);
 			},
 
 			get: function () {

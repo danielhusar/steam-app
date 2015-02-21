@@ -123,6 +123,14 @@ fieldset[disabled] .form-control {
 	display: none;
 }
 
+.item.success {
+	border-color: #029402;
+}
+
+.item.error {
+	border-color: #A30000;
+}
+
 .item img {
 	width: 62px;
 }
@@ -150,7 +158,8 @@ fieldset[disabled] .form-control {
 	margin: 0;
 }
 
-.item .cta {
+.item .cta,
+.item .debug {
 	margin-top: 10px;
 }
 
@@ -163,6 +172,31 @@ fieldset[disabled] .form-control {
 }
 
 .item.loading button {
+	display: none;
+}
+
+.item .debug {
+	position: relative;
+}
+
+.item pre {
+	position: absolute;
+	border: 1px solid #333;
+	background: #504949;
+	padding: 10px;
+	margin-top: 5px;
+	right: 0;
+	z-index: 10;
+	text-align: left;
+	color: white;
+	tab-size: 4;
+}
+
+[data-page="index"] .item .debug {
+	display: none;
+}
+
+[data-page="basket"] .item .cta {
 	display: none;
 }
 
