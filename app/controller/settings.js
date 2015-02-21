@@ -1,16 +1,16 @@
 'use strict';
 
-var $ = global.window.jQuery;
+var $ = require('../lib/query');
 
 module.exports = function (app) {
 	app.controller('SettingsController', function ($scope, SettingsService, UserDetailsService) {
 		$scope.nav = 'settings';
-		$('[data-page]').attr('data-page', 'settings');
+		$('[data-page]').setAttribute('data-page', 'settings');
 
 		$scope.settings = UserDetailsService.get();
 
 		$scope.save = function () {
-			var iframe = $('#ifr')[0];
+			var iframe = $('#ifr');
 
 			$scope.settings = {
 				currency: iframe.contentWindow.g_rgWalletInfo.wallet_currency,

@@ -24,7 +24,7 @@ module.exports = function (app) {
 					  data.push(item);
 					});
 
-					// Reduce to only uniq intems
+					// Reduce to only uniq items
 					items = _.uniq(data.concat(items), function (i) {
 						return i.id;
 					});

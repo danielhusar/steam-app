@@ -1,6 +1,6 @@
 'use strict';
 
-var $ = global.window.jQuery;
+var $ = require('../lib/query');
 
 module.exports = function (app) {
 
@@ -8,7 +8,7 @@ module.exports = function (app) {
 
 	app.controller('BasketController', function ($scope, BuyService, $interval) {
 		$scope.nav = 'basket';
-		$('[data-page]').attr('data-page', 'basket');
+		$('[data-page]').setAttribute('data-page', 'basket');
 
 		$scope.items = BuyService.get();
 

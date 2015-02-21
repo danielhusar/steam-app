@@ -3,7 +3,7 @@
 var fmt = require('simple-fmt');
 var gui = global.window.nwDispatcher.requireNwGui();
 var win = gui.Window.get();
-var $ = global.window.jQuery;
+var $ = require('../lib/query');
 var items = [];
 var buy = 'window.buy = window.buy || {}; \
 					 $J.ajax({ \
@@ -34,7 +34,8 @@ var buy = 'window.buy = window.buy || {}; \
 							jqXHR: jqXHR \
 						} \
 				  });';
-var iframe = $('#ifr')[0];
+var iframe = $('#ifr');
+
 
 module.exports = function (app) {
 	app.service('BuyService', function (UserDetailsService, FilterItemsFactory) {

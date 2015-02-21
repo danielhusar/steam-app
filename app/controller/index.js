@@ -1,7 +1,9 @@
 'use strict';
 
 var _ = require('lodash');
-var $ = global.window.jQuery;
+var $ = require('../lib/query');
+
+console.log(global.window.document.querySelector);
 
 module.exports = function (app) {
 
@@ -11,7 +13,7 @@ module.exports = function (app) {
 
 	app.controller('IndexController', function ($scope, $interval, SettingsService, UserDetailsService, NewlyService) {
 		$scope.nav = 'index';
-		$('[data-page]').attr('data-page', 'index');
+		$('[data-page]').setAttribute('data-page', 'index');
 		$scope.settings = SettingsService.newly.get();
 		$scope.interval = interval;
 		$scope.items = NewlyService.cache();
@@ -31,6 +33,7 @@ module.exports = function (app) {
 			startInt();
 		};
 		$scope.stop = clearInt;
+
 		$scope.clear = function () {
 			NewlyService.clearCache();
 			$scope.items = NewlyService.cache();

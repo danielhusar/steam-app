@@ -1,7 +1,6 @@
 'use strict';
 
 var escapeStringRegexp = require('escape-string-regexp');
-var $ = global.window.jQuery;
 var _ = require('lodash');
 var buyed = [];
 

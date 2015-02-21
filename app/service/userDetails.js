@@ -27,6 +27,7 @@ module.exports = function (app) {
 					2: 'GBP',
 					3: '€'
 				};
+
 				return config[id] || config[3];
 			}
 
