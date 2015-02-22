@@ -11,7 +11,7 @@ gulp.task('default', function () {
 		files: [ './**'],
 		macIcns: './public/img/icon.icns',
 		winIco: './public/img/icon.ico',
-		platforms: ['osx64', 'win32'] // change this to 'win' for/on windows
+		platforms: ['osx64'] // change this to 'win' for/on windows
 	});
 
 	// Log stuff you want
