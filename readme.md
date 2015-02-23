@@ -21,6 +21,9 @@ Then on the newly listed page you can filter items according to any game and ite
 You can set up autobuy by specifieng item, maximum price and quantity, and it will autobuy this items when they pop in.
 All the items that it tried to buy should show in basket page.
 
+## Screenshot
+![screenshot](public/img/screenshot.jpg)
+
 
 ## License
 
