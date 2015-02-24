@@ -2,6 +2,7 @@
 
 require('./app/model/user.js').seeds();
 require('./app/model/newly.js').seeds();
+require('./app/model/search.js').seeds();
 
 var app = angular.module('app', ['ngRoute'])
 	.config(function ($routeProvider) {

@@ -1,3 +1,93 @@
 <div ng-include="'public/_navbar.html'"></div>
 
-<div class="container">Search</div>
+<div class="container">
+
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="items" class="col-sm-2 control-label">Items</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="items" ng-model="settings.items" ng-readonly="interval">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Category</label>
+			<div class="col-sm-10">
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_CSGO_Type_Pistol" ng-model="settings.category.tag_CSGO_Type_Pistol"> Pistol
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Type_CSGO_Type_SMG" ng-model="settings.category.tag_730_Type_CSGO_Type_SMG"> SMG
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Rifle" ng-model="settings.category.tag_730_Type_CSGO_Type_Rifle"> Rifle
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Type_CSGO_Type_SniperRifle" ng-model="settings.category.tag_730_Type_CSGO_Type_SniperRifle"> Sniper Rifle
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Shotgun" ng-model="settings.category.tag_730_Type_CSGO_Type_Shotgun"> Shotgun
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Machinegun" ng-model="settings.category.tag_730_Type_CSGO_Type_Machinegun"> Machinegun
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Knife" ng-model="settings.category.tag_730_Type_CSGO_Type_Knife"> Knife
+				</label>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Exterior</label>
+			<div class="col-sm-10">
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Exterior_WearCategory0" ng-model="settings.exterior.tag_730_Exterior_WearCategory0"> Factory New
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Exterior_WearCategory1" ng-model="settings.exterior.tag_730_Exterior_WearCategory1"> Minimal Wear
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Exterior_WearCategory2" ng-model="settings.exterior.tag_730_Exterior_WearCategory2"> Field-Tested
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Exterior_WearCategory3" ng-model="settings.exterior.tag_730_Exterior_WearCategory3"> Well-Worn
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Exterior_WearCategory4" ng-model="settings.exterior.tag_730_Exterior_WearCategory4"> Battle-Scarred
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="tag_730_Exterior_WearCategoryNA" ng-model="settings.exterior.tag_730_Exterior_WearCategoryNA"> Not Painted
+				</label>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="price" class="col-sm-2 control-label">Auto Buy</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" id="price" ng-model="settings.autobuy.price" placeholder="max price" ng-readonly="interval">
+			</div>
+			<div class="col-sm-2">
+				<input type="number" class="form-control" id="quantity" ng-model="settings.autobuy.quantity" placeholder="quantity" ng-readonly="interval">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="rate" class="col-sm-2 control-label">Refresh Rate</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control small-field" id="rate" ng-model="settings.rate" ng-readonly="interval">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-8">
+				<button type="submit" class="btn btn-success" ng-click='start()' ng-if="!interval">Start</button>
+				<button type="submit" class="btn btn-warning" ng-click='stop()' ng-if="interval">Stop</button>
+				<button type="submit" class="btn btn-warning offset" ng-click='clear()' ng-if="!interval && items.length">Clear</button>
+			</div>
+		</div>
+	</form>
+
+	<div class="items list">
+		<item ng-repeat="item in items" data="item"></item>
+	</div>
+</div>
