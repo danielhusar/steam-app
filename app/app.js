@@ -28,7 +28,8 @@ var app = angular.module('app', ['ngRoute'])
 	})
 	.config(function ($anchorScrollProvider) {
 		$anchorScrollProvider.disableAutoScrolling();
-	});
+	})
+	.constant('config', require('./app/config/config'));
 
 require('./app/controller/index.js')(app);
 require('./app/controller/search.js')(app);
@@ -40,7 +41,7 @@ require('./app/service/userDetails.js')(app);
 require('./app/service/newly.js')(app);
 require('./app/service/buy.js')(app);
 
-require('./app/factory/sanitizeName.js')(app);
+require('./app/factory/sanitize.js')(app);
 require('./app/factory/itemData.js')(app);
 require('./app/factory/filterItems.js')(app);
 require('./app/factory/autoBuy.js')(app);

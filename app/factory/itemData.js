@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = function (app) {
-	app.factory('ItemDataFactory', function(SanitizeNameFactory) {
+	app.factory('ItemDataFactory', function(SanitizeFactory) {
 
 			return function ($item) {
 
 				var item = {
 					image: $item.find('.market_listing_item_img').attr('src'),
-					name: SanitizeNameFactory($item.find('.market_listing_item_name').text()),
+					name: SanitizeFactory.name($item.find('.market_listing_item_name').text()),
 					game: $item.find('.market_listing_game_name').text(),
 					url: $item.find('.market_listing_item_name_link').attr('href'),
 					priceNoFee: $item.find('.market_listing_price_without_fee').text().replace(/($|€|£|USD)/gi, '').replace(/\-/gi, '0').replace(',', '.').trim(),
@@ -24,4 +24,4 @@ module.exports = function (app) {
 			};
 
 	});
-}
+};

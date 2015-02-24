@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
 var gui = global.window.nwDispatcher.requireNwGui();
 
 module.exports = function (app) {
@@ -18,7 +17,7 @@ module.exports = function (app) {
 				};
 
 				$scope.buy = function (item) {
-					BuyService.buy(_.clone(item, true));
+					BuyService.buy(item);
 					$scope.data.status = 'buying';
 				};
 

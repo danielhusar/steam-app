@@ -1,13 +1,14 @@
 'use strict';
 
-var escapeStringRegexp = require('escape-string-regexp');
 var blacklist = [];
 
 module.exports = function (app) {
-	app.factory('FilterItemsFactory', function (SanitizeNameFactory) {
+	app.factory('FilterItemsFactory', function (SanitizeFactory) {
 
 		function filter (data, game, items) {
-			var regexp = new RegExp(escapeStringRegexp(SanitizeNameFactory(items)).replace(/\,/gi, '|'), 'gi');
+			console.log('a', items);
+			var regexp = SanitizeFactory.regexp(items);
+			console.log(regexp);
 
 			return data.filter(function (item) {
 				var ret = true;

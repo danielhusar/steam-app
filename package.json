@@ -34,6 +34,6 @@
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-util": "^3.0.3",
-    "node-webkit-builder": "^1.0.8"
+    "node-webkit-builder": "^1.0.10"
   }
 }
