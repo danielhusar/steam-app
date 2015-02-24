@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-	'FAKEBUY': true
+	'FAKEBUY': false
 };

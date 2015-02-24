@@ -6,9 +6,7 @@ module.exports = function (app) {
 	app.factory('FilterItemsFactory', function (SanitizeFactory) {
 
 		function filter (data, game, items) {
-			console.log('a', items);
 			var regexp = SanitizeFactory.regexp(items);
-			console.log(regexp);
 
 			return data.filter(function (item) {
 				var ret = true;
