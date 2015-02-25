@@ -9,11 +9,6 @@ module.exports = function (app) {
 	app.service('SearchService', function ($q, FilterItemsFactory, ItemDataFactory, AutoBuyFactory, SettingsService) {
 
 		function get (deferred, settings) {
-
-			console.log(settings.items);
-
-			console.log(fmt('http://steamcommunity.com/market/search/render/?query={0}&start=0&count=30&sort_column=price&sort_dir=asc', settings.items));
-
 			req(fmt('http://steamcommunity.com/market/search/render/?query={0}&start=0&count=30&sort_column=price&sort_dir=asc', settings.items),
 					{
 						steamLogin: '76561198058604396%7C%7C5CF1633B6BBD5EE3A03CBDE7291C0AE1320C5753'
@@ -22,8 +17,6 @@ module.exports = function (app) {
 					var body = response.getBody();
 					var $ = cheerio.load('<div>' + body.results_html + '</div>');
 					var data = [];
-
-					console.log(body.results_html);
 
 					$('.market_listing_row').each(function(i, elem) {
 					  var item = ItemDataFactory($(this));
