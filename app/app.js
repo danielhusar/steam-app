@@ -40,6 +40,7 @@ require('./app/controller/basket.js')(app);
 require('./app/service/settings.js')(app);
 require('./app/service/userDetails.js')(app);
 require('./app/service/newly.js')(app);
+require('./app/service/search.js')(app);
 require('./app/service/buy.js')(app);
 
 require('./app/factory/sanitize.js')(app);

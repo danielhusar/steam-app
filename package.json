@@ -26,7 +26,6 @@
     "bootstrap": "^3.3.2",
     "cheerio": "^0.18.0",
     "diskdb": "^0.1.14",
-    "escape-string-regexp": "^1.0.2",
     "lodash": "^3.2.0",
     "requestify": "^0.1.16",
     "simple-fmt": "^0.1.0"

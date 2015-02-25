@@ -1,19 +1,19 @@
 'use strict';
 
-var escapeStringRegexp = require('escape-string-regexp');
+var _ = require('lodash');
 
 module.exports = function (app) {
 	app.service('SanitizeFactory', function () {
 
 		function sanitizeName (name) {
-			return name.replace(/™/gi, '').replace(/^\,|\,$/g, '');
+			return _.trim(name.replace(/™/gi, ''), ',');
 		}
 
 		return {
 			name: sanitizeName,
 
 			regexp: function (name) {
-				return new RegExp(escapeStringRegexp(sanitizeName(name)).replace(/\,/gi, '|'), 'gi');
+				return new RegExp( _.escapeRegExp(sanitizeName(name)).replace(/\,/gi, '|'), 'gi' );
 			}
 		};
 
