@@ -15,7 +15,6 @@ module.exports = function (app) {
 
 		$scope.start = function () {
 			SearchService.get($scope.settings).then(function (data) {
-				console.log(data);
 				$scope.items = data;
 			});
 		};
