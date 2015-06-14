@@ -32,8 +32,6 @@ module.exports = function (app) {
 					  	attempts.push(item.id);
 					  }
 					});
-
-					console.log(settings.attempts);
 				});
 
 			});
