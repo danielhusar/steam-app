@@ -8,7 +8,8 @@ module.exports = function (app) {
 				var item = {
 					image: $item.find('.market_listing_item_img').attr('src'),
 					name: SanitizeFactory.name($item.find('.market_listing_item_name').text()),
-					game: $item.find('.market_listing_game_name').text()
+					game: $item.find('.market_listing_game_name').text(),
+					sold: false
 				};
 
 				var $url = $item.find('.market_listing_item_name_link').length ? $item.find('.market_listing_item_name_link') : $item.find('.market_listing_row_link');
@@ -20,11 +21,13 @@ module.exports = function (app) {
 				var $priceFee = $item.find('.market_listing_price_with_fee').length ? $item.find('.market_listing_price_with_fee') : $item.find('.market_listing_their_price .market_table_value span');
 				item.priceFee = $priceFee.text().replace(/($|€|£|USD)/gi, '').replace(/\-/gi, '0').replace(',', '.').trim();
 
-				item.id = ($item.html().match(/listing\_sell\_new\_(.*)\_image/) || $item.html().match(/result\_(.*)\_image/))[1];
+				item.id = ($item.html().match(/listing\_sell\_new\_(.*)\_image/) || $item.html().match(/result\_(.*)\_image/) || $item.attr('id').match(/listing\_(.*)/))[1];
 
 				if (item.priceFee !== 'Sold!') {
 					item.priceNoFee = Number(Number(item.priceNoFee).toFixed(2));
 					item.priceFee = Number(Number(item.priceFee).toFixed(2));
+				} else {
+					item.sold = true;
 				}
 
 				return item;

@@ -15,7 +15,7 @@ module.exports = function (app) {
 		$scope.settings = SettingsService.search.get();
 
 		$scope.$watch('settings', _.debounce(function (data) {
-			//SettingsService.search.set(data);
+			SettingsService.search.set(data);
 		}, 1000), true);
 
 		// Angular view stop updating when changing routes and $interval is in progress so restart it
@@ -29,9 +29,14 @@ module.exports = function (app) {
 
 		function startInt () {
 			$scope.interval = interval = true;
-			//searchInterval = $interval(function () {
+
+			searchInterval = $interval(function () {
 				SearchService.get($scope.settings);
-			//}, $scope.settings.rate);
+			}, $scope.settings.rate);
+
+			settingsInterval = $interval(function () {
+				$scope.settings = SettingsService.search.get();
+			}, 500);
 		}
 
 		function clearInt () {
