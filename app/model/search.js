@@ -19,29 +19,10 @@ module.exports = {
 	seeds: function () {
 		if (db.search.count() === 0) {
 			return db.search.save({
-				'items': 'karambit',
-				'rate': '500',
-				'autobuy': {
-					'price': '',
-					'quantity': ''
-				},
-				'category': {
-					'tag_CSGO_Type_Pistol': false,
-					'tag_730_Type_CSGO_Type_SMG': false,
-					'tag_730_Type_CSGO_Type_Rifle': false,
-					'tag_730_Type_CSGO_Type_SniperRifle': false,
-					'tag_730_Type_CSGO_Type_Shotgun': false,
-					'tag_730_Type_CSGO_Type_Machinegun': false,
-					'tag_730_Type_CSGO_Type_Knife': false
-				},
-				'exterior': {
-					'tag_730_Exterior_WearCategory0': false,
-					'tag_730_Exterior_WearCategory1': false,
-					'tag_730_Exterior_WearCategory2': false,
-					'tag_730_Exterior_WearCategory3': false,
-					'tag_730_Exterior_WearCategory4': false,
-					'tag_730_Exterior_WearCategoryNA': false
-				},
+				'items': 'http://steamcommunity.com/market/listings/730/Glock-18%20%7C%20Death%20Rattle%20%28Field-Tested%29',
+				'rate': 500,
+				'attempts': 10,
+				'cookie': '',
 				'uid': 'search'
 			});
 		}

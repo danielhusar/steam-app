@@ -6,25 +6,29 @@ var cheerio = require('cheerio');
 var req = require('../lib/request.js');
 
 module.exports = function (app) {
-	app.service('SearchService', function ($q, FilterItemsFactory, ItemDataFactory, AutoBuyFactory, SettingsService) {
+	app.service('SearchService', function ($q, UserDetailsService, FilterItemsFactory, ItemDataFactory, AutoBuyFactory) {
+
+		var user = UserDetailsService.get();
 
 		function get (deferred, settings) {
-			req(fmt('http://steamcommunity.com/market/search/render/?query={0}&start=0&count=30&sort_column=price&sort_dir=asc', settings.items),
-					{
-						steamLogin: '76561198058604396%7C%7C5CF1633B6BBD5EE3A03CBDE7291C0AE1320C5753'
-					}
-				).then(function (response) {
+			var url = fmt(settings.items + '/render?query=&start=10&count=10&country={0}&language={1}&currency={2}', user.country, user.language, user.currency);
+
+			req(url, {steamLogin: settings.cookie}).then(function (response) {
+
 					var body = response.getBody();
 					var $ = cheerio.load('<div>' + body.results_html + '</div>');
 					var data = [];
 
-					$('.market_listing_row').each(function(i, elem) {
+
+
+					console.log($('.market_listing_row'));
+
+					$('.market_listing_row').each(function () {
 					  var item = ItemDataFactory($(this));
 					  data.push(item);
 					});
 
-					// Filter items according to our settings
-					data = FilterItemsFactory.filter(data, undefined, settings.items);
+					console.log(data);
 
 					// Autobuy
 					// data.forEach(function (i) {

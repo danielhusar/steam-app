@@ -86,6 +86,10 @@ fieldset[disabled] .form-control {
 	border-color: #332A2A;
 }
 
+textarea.form-control {
+	height: 200px;
+}
+
 .alert-danger {
 	color: #FFFFFF;
 	background-color: #FF6B6B;

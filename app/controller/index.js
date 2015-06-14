@@ -17,7 +17,7 @@ module.exports = function (app) {
 		$scope.items = NewlyService.cache();
 
 		$scope.$watch('settings', _.debounce(function (data) {
-			SettingsService.newly.set(data);
+			//SettingsService.newly.set(data);
 		}, 1000), true);
 
 		// Angular view stop updating when changing routes and $interval is in progress so restart it

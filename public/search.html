@@ -4,70 +4,23 @@
 
 	<form class="form-horizontal">
 		<div class="form-group">
-			<label for="items" class="col-sm-2 control-label">Items</label>
+			<label for="cookie" class="col-sm-2 control-label">Steam Cookie</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="items" ng-model="settings.items" ng-readonly="interval">
+				<input type="text" class="form-control" id="cookie" ng-model="settings.cookie" ng-readonly="interval">
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Category</label>
+			<label for="items" class="col-sm-2 control-label">Items urls (separated by new line)</label>
 			<div class="col-sm-10">
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_CSGO_Type_Pistol" ng-model="settings.category.tag_CSGO_Type_Pistol"> Pistol
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Type_CSGO_Type_SMG" ng-model="settings.category.tag_730_Type_CSGO_Type_SMG"> SMG
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Rifle" ng-model="settings.category.tag_730_Type_CSGO_Type_Rifle"> Rifle
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Type_CSGO_Type_SniperRifle" ng-model="settings.category.tag_730_Type_CSGO_Type_SniperRifle"> Sniper Rifle
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Shotgun" ng-model="settings.category.tag_730_Type_CSGO_Type_Shotgun"> Shotgun
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Machinegun" ng-model="settings.category.tag_730_Type_CSGO_Type_Machinegun"> Machinegun
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Type_CSGO_Type_Knife" ng-model="settings.category.tag_730_Type_CSGO_Type_Knife"> Knife
-				</label>
+				<textarea class="form-control" id="items" ng-model="settings.items" ng-readonly="interval"></textarea>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Exterior</label>
-			<div class="col-sm-10">
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Exterior_WearCategory0" ng-model="settings.exterior.tag_730_Exterior_WearCategory0"> Factory New
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Exterior_WearCategory1" ng-model="settings.exterior.tag_730_Exterior_WearCategory1"> Minimal Wear
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Exterior_WearCategory2" ng-model="settings.exterior.tag_730_Exterior_WearCategory2"> Field-Tested
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Exterior_WearCategory3" ng-model="settings.exterior.tag_730_Exterior_WearCategory3"> Well-Worn
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Exterior_WearCategory4" ng-model="settings.exterior.tag_730_Exterior_WearCategory4"> Battle-Scarred
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="tag_730_Exterior_WearCategoryNA" ng-model="settings.exterior.tag_730_Exterior_WearCategoryNA"> Not Painted
-				</label>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="price" class="col-sm-2 control-label">Auto Buy</label>
+			<label for="attempts" class="col-sm-2 control-label">Max Attempts:</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" id="price" ng-model="settings.autobuy.price" placeholder="max price" ng-readonly="interval">
-			</div>
-			<div class="col-sm-2">
-				<input type="number" class="form-control" id="quantity" ng-model="settings.autobuy.quantity" placeholder="quantity" ng-readonly="interval">
+				<input type="number" class="form-control" id="attempts" ng-model="settings.attempts" placeholder="attempts" ng-readonly="interval">
 			</div>
 		</div>
 
@@ -82,7 +35,6 @@
 			<div class="col-sm-offset-2 col-sm-8">
 				<button type="submit" class="btn btn-success" ng-click='start()' ng-if="!interval">Start</button>
 				<button type="submit" class="btn btn-warning" ng-click='stop()' ng-if="interval">Stop</button>
-				<button type="submit" class="btn btn-warning offset" ng-click='clear()' ng-if="!interval && items.length">Clear</button>
 			</div>
 		</div>
 	</form>
