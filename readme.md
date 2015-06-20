@@ -14,17 +14,6 @@ npm install
 
 Run the app with node webkit, there is a [gulp](https://github.com/gulpjs/gulp) task that can do it for you.
 
-## Documentation
-
-First you need to log in to the steam iframe on settings page, and make sure you are logged in.
-Then on the newly listed page you can filter items according to any game and items. You can separate multiple items by comma.
-You can set up autobuy by specifieng item, maximum price and quantity, and it will autobuy this items when they pop in.
-All the items that it tried to buy should show in basket page.
-
-## Screenshot
-![screenshot](public/img/screenshot.jpg)
-
-
 ## License
 
 MIT © [Daniel Husar](https://github.com/danielhusar)
