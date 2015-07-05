@@ -10,6 +10,9 @@ module.exports = function (url, cookies, method, body) {
 	return requestify.request(url, {
 		method: 'GET',
 		cookies: cookies,
-		body: body
+		body: body,
+		headers: {
+      'X-Requested-With': 'http://steamcommunity.com/market/search'
+    },
 	});
 };
