@@ -21,7 +21,7 @@ module.exports = function (app) {
 				var param = temp[1] || '';
 				var url = fmt(baseUrl + '/render?query=&start=10&count=10&country={0}&language={1}&currency={2}&' + param, user.country, user.language, user.currency);
 
-				req(item); // you might need to access original url so items appear there
+				//req(item); // you might need to access original url so items appear there
 				req(url, {steamLogin: settings.cookie}).then(function (response) {
 					var body = response.getBody();
 					var $ = cheerio.load('<div>' + body.results_html + '</div>');
